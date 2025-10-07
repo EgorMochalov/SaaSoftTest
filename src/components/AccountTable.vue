@@ -11,7 +11,7 @@
     </div>
 
     <div class="account-form__hint alert alert-info">
-      <small>В поле "Метка" вводите текстовые метки через знак <strong>;</strong> (максимум 50 символов)</small>
+      <small>Для указания нескольких меток для одной пары логин/пароль используйте разделитель <strong>;</strong></small>
     </div>
 
     <div class="account-form__table-container">
