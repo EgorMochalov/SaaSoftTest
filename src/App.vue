@@ -1,20 +1,25 @@
 <template>
-  <div id="app">
-    <AccountForm />
+  <div id="app" class="app">
+    <div class="app__container">
+      <AccountTable />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import AccountForm from './components/AccountForm.vue'
+import AccountTable from './components/AccountTable.vue';
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 20px;
+.app {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+}
+
+.app__container {
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 * {

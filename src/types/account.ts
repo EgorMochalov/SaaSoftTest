@@ -4,16 +4,8 @@ export interface AccountLabel {
 
 export interface Account {
   id: string;
-  label: string; // строка меток через ;
-  labels: AccountLabel[]; // преобразованный массив меток
+  labels: AccountLabel[];
   type: 'LDAP' | 'Локальная';
   login: string;
   password: string | null;
-}
-
-export interface AccountForm {
-  label: string;
-  type: 'LDAP' | 'Локальная';
-  login: string;
-  password: string;
 }
