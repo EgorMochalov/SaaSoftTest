@@ -1,10 +1,5 @@
 <template>
-  <tr 
-    class="account-item" 
-    :class="{
-      'account-item--error': hasErrors
-    }"
-  >
+  <tr class="account-item">
     <td class="account-item__cell account-item__cell--label">
       <div class="account-item__field">
         <input
@@ -12,9 +7,8 @@
           v-model="labelString"
           @blur="handleBlur"
           placeholder="Метки через ;"
+          class="form-control"
           :class="{ 
-            'account-item__input--error': errors.label,
-            'form-control': true,
             'is-invalid': errors.label
           }"
           maxlength="50"
@@ -27,9 +21,8 @@
         <select
           v-model="localAccount.type"
           @change="handleChange"
+          class="form-select"
           :class="{ 
-            'account-item__select--error': errors.type,
-            'form-select': true,
             'is-invalid': errors.type
           }"
         >
@@ -46,9 +39,8 @@
           v-model="localAccount.login"
           @blur="handleBlur"
           placeholder="Логин"
+          class="form-control"
           :class="{ 
-            'account-item__input--error': errors.login,
-            'form-control': true,
             'is-invalid': errors.login
           }"
           maxlength="100"
@@ -64,9 +56,8 @@
             v-model="localAccount.password"
             @blur="handleBlur"
             placeholder="Пароль"
+            class="form-control"
             :class="{ 
-              'account-item__input--error': errors.password,
-              'form-control': true,
               'is-invalid': errors.password
             }"
             maxlength="100"
