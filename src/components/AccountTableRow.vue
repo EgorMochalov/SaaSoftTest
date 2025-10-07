@@ -143,10 +143,6 @@ const togglePasswordVisibility = () => {
   isPasswordVisible.value = !isPasswordVisible.value
 }
 
-const hasErrors = computed(() => {
-  return Object.values(errors).some(error => error !== false)
-})
-
 const validate = (): boolean => {
   Object.keys(errors).forEach(key => {
     errors[key as keyof typeof errors] = false
