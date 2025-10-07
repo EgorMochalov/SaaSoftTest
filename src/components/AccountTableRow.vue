@@ -121,7 +121,6 @@ interface Props {
 interface Emits {
   (e: 'update', account: Account): void
   (e: 'delete'): void
-  (e: 'validityChange', isValid: boolean): void
 }
 
 const props = defineProps<Props>()
@@ -185,10 +184,7 @@ const validate = (): boolean => {
       errors.password = true
       isValid = false
     }
-  }
-
-  emit('validityChange', isValid)
-  
+  }  
   return isValid
 }
 

@@ -1,6 +1,5 @@
 <template>
   <div class="account-form">
-    <!-- Заголовок и кнопка добавления -->
     <div class="account-form__header">
       <h1 class="account-form__title">Управление учетными записями</h1>
       <button 
@@ -11,12 +10,10 @@
       </button>
     </div>
 
-    <!-- Подсказка для поля метка -->
     <div class="account-form__hint alert alert-info">
       <small>В поле "Метка" вводите текстовые метки через знак <strong>;</strong> (максимум 50 символов)</small>
     </div>
 
-    <!-- Таблица учетных записей -->
     <div class="account-form__table-container">
       <table class="account-form__table table table-striped table-hover">
         <thead class="account-form__table-header">
@@ -33,10 +30,8 @@
             v-for="account in displayedAccounts"
             :key="account.id"
             :account="account"
-            :is-new="isNewAccount(account.id)"
             @update="updateAccount"
             @delete="deleteAccount(account.id)"
-            @validityChange="handleValidityChange(account.id, $event)"
           />
         </tbody>
       </table>
@@ -60,7 +55,6 @@ import type { Account } from '../types/account'
 const accountStore = useAccountStore()
 
 const newAccounts = ref<Account[]>([])
-const accountValidity = reactive<{ [key: string]: boolean }>({})
 
 const displayedAccounts = computed(() => [
   ...accountStore.accounts,
@@ -84,10 +78,8 @@ const addNewAccount = () => {
 
 const updateAccount = (account: Account) => {
   if (isNewAccount(account.id)) {
-    const success = accountStore.addAccount(account)
-    if (success) {
-      newAccounts.value = newAccounts.value.filter(acc => acc.id !== account.id)
-    }
+    accountStore.addAccount(account)
+    newAccounts.value = newAccounts.value.filter(acc => acc.id !== account.id)
   } else {
     accountStore.updateAccount(account.id, account)
   }
@@ -96,14 +88,9 @@ const updateAccount = (account: Account) => {
 const deleteAccount = (id: string) => {
   if (isNewAccount(id)) {
     newAccounts.value = newAccounts.value.filter(acc => acc.id !== id)
-    delete accountValidity[id]
   } else {
     accountStore.deleteAccount(id)
   }
-}
-
-const handleValidityChange = (id: string, isValid: boolean) => {
-  accountValidity[id] = isValid
 }
 </script>
 
